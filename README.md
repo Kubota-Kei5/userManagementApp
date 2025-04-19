@@ -29,6 +29,22 @@
 NEXT.js のプロジェクト作成
 `npx create-next-app@latest`
 
-React 用コンポーネントライブラリとしての FontAwesome のインストール
-`npm install @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons
-`
+React 用コンポーネントライブラリとしての FontAwesome のインストール：<br>
+
+```
+npm install @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons
+```
+
+### Develop
+
+実行場所：
+
+```
+./myapp
+```
+
+コマンド：
+
+```
+npm run dev
+```
