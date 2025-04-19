@@ -7,7 +7,6 @@
 ### フロント
 
 - React
-- Tailwind CSS //削除予定
 - Next.js
 
 ### バックエンド
@@ -24,7 +23,6 @@
 - Github
 - Github Copilot ( pro プラン )
 - Cline
-- Figma
 
 ## Getting Started
 
