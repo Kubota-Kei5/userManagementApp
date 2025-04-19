@@ -25,3 +25,10 @@
 - Github Copilot ( pro プラン )
 - Cline
 - Figma
+
+NEXT.js のプロジェクト作成
+`npx create-next-app@latest`
+
+React 用コンポーネントライブラリとしての FontAwesome のインストール
+`npm install @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons
+`
