@@ -1,14 +1,13 @@
 import Link from "next/link";
 import styles from "@/styles/GlobalNav.module.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCube } from "@fortawesome/free-solid-svg-icons";
+import { BiCube } from "react-icons/bi";
 
 export default function GlobalNav() {
   return (
     <nav className={styles.globalNav}>
       <div className={styles.navContainer}>
         <a href="index.html" className={styles.logo}>
-          <FontAwesomeIcon icon={faCube} className={styles.logoIcon} />
+          <BiCube className={styles.logoIcon} />
           <span className={styles.logoText}>UMS</span>
         </a>
         <div className={styles.navLinks}>
