@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import SearchBox from "@/components/SearchBox";
 import { supabase } from "@/utils/supabase";
+import styles from "@/styles/UserList.module.css";
 
 export default function UserList() {
   const [users, setUsers] = useState([]);
@@ -17,7 +18,7 @@ export default function UserList() {
   const fetchUsers = async () => {
     try {
       const { data, error } = await supabase
-        .from("profiles")
+        .from("users")
         .select("*")
         .order("updated_at", { ascending: false });
 
@@ -38,9 +39,7 @@ export default function UserList() {
       return;
     }
 
-    const filtered = users.filter((user) =>
-      user.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const filtered = users.filter((user) => user.user_id.includes(searchTerm));
     setFilteredUsers(filtered);
   };
 
@@ -51,19 +50,24 @@ export default function UserList() {
     <>
       <h1>ユーザーリスト</h1>
       <SearchBox onSearch={handleSearch} />
-      <div>
+      <div className={styles.userGrid}>
         {filteredUsers.length === 0 ? (
           <h3>ユーザーが見つかりませんでした。</h3>
         ) : (
           filteredUsers.map((user) => (
-            <div>
-              <div key={user.id}>
-                <h2 className="text-xl font-semibold">{user.name}</h2>
-                <p className="text-gray-600">{user.email}</p>
-                <p className="text-sm text-gray-500">
-                  作成日: {new Date(user.created_at).toLocaleDateString()}
-                </p>
+            <div key={user.id} className={styles.userCard}>
+              <div className={styles.userInfo}>
+                <i className={styles.userIcon}></i>
+                <span className={styles.userId}>{user.user_id}</span>
               </div>
+              <button
+                onClick={() => redirectToDetail(user.user_id)}
+                className={styles.detailBtn}
+                aria-label="詳細を見る"
+              >
+                <span className={styles.detailText}>詳細を見る</span>
+                <i></i>
+              </button>
             </div>
           ))
         )}

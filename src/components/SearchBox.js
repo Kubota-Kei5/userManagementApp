@@ -14,7 +14,7 @@ export default function SearchBox({ onSearch }) {
   const handleChange = (e) => {
     const value = e.target.value;
     setSearchTerm(value);
-    onSearch(value); // リアルタイム検索のために入力時にも検索を実行
+    onSearch(value);
   };
 
   return (
@@ -25,7 +25,7 @@ export default function SearchBox({ onSearch }) {
           type="text"
           value={searchTerm}
           onChange={handleChange}
-          placeholder="ユーザー名で検索"
+          placeholder="ユーザーIDで検索"
           className={styles.searchInput}
         />
         <button type="submit" className={styles.searchButton}>
