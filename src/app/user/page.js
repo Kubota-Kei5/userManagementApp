@@ -49,23 +49,21 @@ export default function UserList() {
 
   return (
     <>
-      <SearchBox onSearch={handleSearch} />
       <h1>ユーザーリスト</h1>
-
-      <div className="grid gap-4">
+      <SearchBox onSearch={handleSearch} />
+      <div>
         {filteredUsers.length === 0 ? (
-          <p>ユーザーが見つかりませんでした。</p>
+          <h3>ユーザーが見つかりませんでした。</h3>
         ) : (
           filteredUsers.map((user) => (
-            <div
-              key={user.id}
-              className="border p-4 rounded-lg shadow hover:shadow-md transition-shadow"
-            >
-              <h2 className="text-xl font-semibold">{user.name}</h2>
-              <p className="text-gray-600">{user.email}</p>
-              <p className="text-sm text-gray-500">
-                作成日: {new Date(user.created_at).toLocaleDateString()}
-              </p>
+            <div>
+              <div key={user.id}>
+                <h2 className="text-xl font-semibold">{user.name}</h2>
+                <p className="text-gray-600">{user.email}</p>
+                <p className="text-sm text-gray-500">
+                  作成日: {new Date(user.created_at).toLocaleDateString()}
+                </p>
+              </div>
             </div>
           ))
         )}
