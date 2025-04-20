@@ -1,10 +1,8 @@
-import SearchBox from "@/components/SearchBox";
-
-export default function UserList() {
+export default function UserDetail() {
   return (
     <div>
-      <SearchBox />
-      <h1>ユーザーリスト</h1>
+      <h1>ユーザー詳細</h1>
+
       <p>
         ユーザーリストの内容がここに表示される。Supabaseからデータを取得予定。
       </p>
