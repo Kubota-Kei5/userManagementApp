@@ -8,7 +8,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="ja" fontSize="16px">
+    <html lang="ja" style={{ fontSize: "16px" }}>
       <body>
         {/* ヘッダーやグロナビはここ */}
         <GlobalNav />

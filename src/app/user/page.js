@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import SearchBox from "@/components/SearchBox";
 import { supabase } from "@/utils/supabase";
 import styles from "@/styles/UserList.module.css";
@@ -55,19 +56,18 @@ export default function UserList() {
           <h3>ユーザーが見つかりませんでした。</h3>
         ) : (
           filteredUsers.map((user) => (
-            <div key={user.id} className={styles.userCard}>
+            <div key={user.user_id} className={styles.userCard}>
               <div className={styles.userInfo}>
                 <i className={styles.userIcon}></i>
                 <span className={styles.userId}>{user.user_id}</span>
               </div>
-              <button
-                onClick={() => redirectToDetail(user.user_id)}
+              <Link
+                href={`/user/${user.user_id}`}
                 className={styles.detailBtn}
                 aria-label="詳細を見る"
               >
                 <span className={styles.detailText}>詳細を見る</span>
-                <i></i>
-              </button>
+              </Link>
             </div>
           ))
         )}
