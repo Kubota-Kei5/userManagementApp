@@ -16,6 +16,8 @@ export default function UserDetail() {
   const [avatarURL, setAvatarURL] = useState("");
   const [message, setMessage] = useState("");
   const [isEditing, setIsEditing] = useState(false);
+  const [isConfirming, setIsConfirming] = useState(false);
+  const [deleting, setDeleting] = useState(false);
   const [updating, setUpdating] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
 
@@ -119,6 +121,38 @@ export default function UserDetail() {
     fetchUserData();
   };
 
+  const handleDelete = async () => {
+    setDeleting(true);
+
+    try {
+      const { error } = await supabase
+        .from("users")
+        .delete()
+        .eq("user_id", userID);
+
+      if (error) throw error;
+
+      // 削除成功後、ユーザー一覧ページにリダイレクト
+      window.location.href = "/user";
+    } catch (error) {
+      setError("削除に失敗しました: " + error.message);
+      setIsConfirming(false);
+    } finally {
+      setDeleting(false);
+    }
+  };
+
+  // 削除確認ダイアログを表示する関数
+  const confirmDelete = (e) => {
+    e.preventDefault();
+    setIsConfirming(true);
+  };
+
+  // 削除確認ダイアログのキャンセル処理
+  const cancelDelete = () => {
+    setIsConfirming(false);
+  };
+
   if (loading) {
     return <div>Loading...</div>;
   }
@@ -193,13 +227,22 @@ export default function UserDetail() {
 
         <div className={styles.buttonGroup}>
           {!isEditing ? (
-            <button
-              className={styles.editButton}
-              onClick={handleEdit}
-              type="button"
-            >
-              編集する
-            </button>
+            <>
+              <button
+                className={styles.editButton}
+                onClick={handleEdit}
+                type="button"
+              >
+                編集する
+              </button>
+              <button
+                className={styles.deleteButton}
+                onClick={confirmDelete}
+                type="button"
+              >
+                削除する
+              </button>
+            </>
           ) : (
             <>
               <button
@@ -221,6 +264,26 @@ export default function UserDetail() {
           )}
         </div>
       </form>
+      {isConfirming && (
+        <div className={styles.confirmOverlay}>
+          <div className={styles.confirmDialog}>
+            <p>"{userID}" を削除します。本当によろしいですか？</p>
+            <div className={styles.confirmButtons}>
+              <button
+                onClick={handleDelete}
+                disabled={deleting}
+                className={styles.confirmYes}
+              >
+                {deleting ? "削除中..." : "はい"}
+              </button>
+              <button onClick={cancelDelete} className={styles.confirmNo}>
+                いいえ
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       {showPopup && message && <div className={styles.popup}>{message}</div>}
     </>
   );

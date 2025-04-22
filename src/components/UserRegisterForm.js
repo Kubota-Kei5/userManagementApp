@@ -73,81 +73,84 @@ export default function UserForm() {
   };
 
   return (
-    <form className={styles.registerForm} onSubmit={handleSubmit}>
-      <div className={styles.registerFormGroup}>
-        <label htmlFor="UserId">User ID</label>
-        <input
-          id="UserId"
-          type="text"
-          placeholder="User ID"
-          value={userID}
-          onChange={(e) => setUserID(e.target.value)}
-          required
-        />
-      </div>
+    <>
+      <h1 className={styles.registerTitle}>ユーザー登録</h1>
+      <form className={styles.registerForm} onSubmit={handleSubmit}>
+        <div className={styles.registerFormGroup}>
+          <label htmlFor="UserId">User ID</label>
+          <input
+            id="UserId"
+            type="text"
+            placeholder="User ID"
+            value={userID}
+            onChange={(e) => setUserID(e.target.value)}
+            required
+          />
+        </div>
 
-      <div className={styles.registerFormGroup}>
-        <label htmlFor="Email">Email</label>
-        <input
-          id="Email"
-          type="text"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </div>
+        <div className={styles.registerFormGroup}>
+          <label htmlFor="Email">Email</label>
+          <input
+            id="Email"
+            type="text"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
 
-      <div className={styles.registerFormGroup}>
-        <label htmlFor="FirstName">First Name</label>
-        <input
-          type="text"
-          id="FirstName"
-          placeholder="First Name"
-          value={FirstName}
-          onChange={(e) => setFirstName(e.target.value)}
-          required
-        />
-      </div>
+        <div className={styles.registerFormGroup}>
+          <label htmlFor="FirstName">First Name</label>
+          <input
+            type="text"
+            id="FirstName"
+            placeholder="First Name"
+            value={FirstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            required
+          />
+        </div>
 
-      <div className={styles.registerFormGroup}>
-        <label htmlFor="LastName">Last Name</label>
-        <input
-          type="text"
-          id="LastName"
-          placeholder="Last Name"
-          value={LastName}
-          onChange={(e) => setLastName(e.target.value)}
-          required
-        />
-      </div>
+        <div className={styles.registerFormGroup}>
+          <label htmlFor="LastName">Last Name</label>
+          <input
+            type="text"
+            id="LastName"
+            placeholder="Last Name"
+            value={LastName}
+            onChange={(e) => setLastName(e.target.value)}
+            required
+          />
+        </div>
 
-      <div className={styles.registerFormGroup}>
-        <label htmlFor="AvatarURL">Avatar URL</label>
-        <input
-          type="text"
-          id="AvatarURL"
-          placeholder="Avatar URL"
-          value={avatarURL}
-          onChange={(e) => setAvatarURL(e.target.value)}
-          required
-        />
-      </div>
+        <div className={styles.registerFormGroup}>
+          <label htmlFor="AvatarURL">Avatar URL</label>
+          <input
+            type="text"
+            id="AvatarURL"
+            placeholder="Avatar URL"
+            value={avatarURL}
+            onChange={(e) => setAvatarURL(e.target.value)}
+            required
+          />
+        </div>
 
-      <div className={styles.registerFormGroup}>
-        <button type="submit" disabled={loading}>
-          {loading ? "登録中…" : "登録"}
-        </button>
-        {message && (
-          <p
-            className={
-              message.includes("エラー") ? styles.error : styles.success
-            }
-          >
-            {message}
-          </p>
-        )}
-      </div>
-    </form>
+        <div className={styles.registerFormGroup}>
+          <button type="submit" disabled={loading}>
+            {loading ? "登録中…" : "登録"}
+          </button>
+          {message && (
+            <p
+              className={
+                message.includes("エラー") ? styles.error : styles.success
+              }
+            >
+              {message}
+            </p>
+          )}
+        </div>
+      </form>
+    </>
   );
 }

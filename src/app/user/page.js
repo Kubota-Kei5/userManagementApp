@@ -49,7 +49,7 @@ export default function UserList() {
 
   return (
     <>
-      <h1>ユーザーリスト</h1>
+      <h1 className={styles.listTitle}>ユーザーリスト</h1>
       <SearchBox onSearch={handleSearch} />
       <div className={styles.userGrid}>
         {filteredUsers.length === 0 ? (

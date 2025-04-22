@@ -1,3 +1,7 @@
+.listTitle {
+  text-align: center;
+}
+
 /* ユーザー一覧のグリッドレイアウト */
 .userGrid {
   display: grid;
