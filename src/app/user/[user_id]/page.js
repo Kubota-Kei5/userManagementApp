@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { supabase } from "@/utils/supabase";
 import styles from "@/styles/UserDetail.module.css";
+import InputItem from "@/components/FormItem";
 
 export default function UserDetail() {
   const params = useParams();
@@ -148,7 +149,7 @@ export default function UserDetail() {
     setIsConfirming(true);
   };
 
-  // 削除確認ダイアログのキャンセル処理
+  // 削除確認ダイアログのキャンセル処理 closePopupのほうがいい
   const cancelDelete = () => {
     setIsConfirming(false);
   };
@@ -212,7 +213,16 @@ export default function UserDetail() {
             required
           />
         </div>
-        <div className={styles.detailFormGroup}>
+        <InputItem
+          isEditing={isEditing}
+          htmlFor="AvatarURL"
+          labelName="Avatar URL"
+          placeholder="Avatar URL"
+          id="AvatarURL"
+          value={avatarURL}
+          onChange={(e) => setAvatarURL(e.target.value)}
+        />
+        {/* <div className={styles.detailFormGroup}>
           <label htmlFor="AvatarURL">Avatar URL</label>
           <input
             readOnly={!isEditing}
@@ -223,7 +233,7 @@ export default function UserDetail() {
             onChange={(e) => setAvatarURL(e.target.value)}
             required
           />
-        </div>
+        </div> */}
 
         <div className={styles.buttonGroup}>
           {!isEditing ? (

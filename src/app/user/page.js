@@ -18,6 +18,7 @@ export default function UserList() {
 
   const fetchUsers = async () => {
     try {
+      setLoading(true);
       const { data, error } = await supabase
         .from("users")
         .select("*")
