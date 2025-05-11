@@ -1,6 +1,9 @@
 import Link from "next/link";
 import styles from "@/styles/GlobalNav.module.css";
 import { BiCube } from "react-icons/bi";
+import LoginButton from "@/login";
+import LogoutButton from "@/logout";
+import Profile from "@/profile";
 
 export default function GlobalNav() {
   return (
@@ -24,6 +27,8 @@ export default function GlobalNav() {
           >
             ユーザー登録
           </Link>
+          <LoginButton></LoginButton>
+          <LogoutButton></LogoutButton>
         </div>
       </div>
     </nav>
