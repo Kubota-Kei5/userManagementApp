@@ -277,7 +277,7 @@ export default function UserDetail() {
       {isConfirming && (
         <div className={styles.confirmOverlay}>
           <div className={styles.confirmDialog}>
-            <p>"{userID}" を削除します。本当によろしいですか？</p>
+            <p>{userID} を削除します。本当によろしいですか？</p>
             <div className={styles.confirmButtons}>
               <button
                 onClick={handleDelete}
